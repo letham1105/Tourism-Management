@@ -19,8 +19,7 @@ function sendBookingEmail($customerEmail, $customerName, $bookingDetails) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';                  // Gmail SMTP server
         $mail->SMTPAuth = true;                          // Enable SMTP authentication
-        $mail->Username = 'thamlt.23itb@vku.udn.vn';     // Gmail username
-        $mail->Password = 'pspi rieq icyz qepj';         // Gmail App Password
+    
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // TLS encryption
         $mail->Port = 587;
 
