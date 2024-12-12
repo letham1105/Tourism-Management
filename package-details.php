@@ -1,35 +1,108 @@
 <?php
-session_start();
-error_reporting(0);
-include('includes/config.php');
-if(isset($_POST['submit2']))
-{
-$pid=intval($_GET['pkgid']);
-$useremail=$_SESSION['login'];
-$fromdate=$_POST['fromdate'];
-$todate=$_POST['todate'];
-$comment=$_POST['comment'];
-$status=0;
-$sql="INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
-$query = $dbh->prepare($sql);
-$query->bindParam(':pid',$pid,PDO::PARAM_STR);
-$query->bindParam(':useremail',$useremail,PDO::PARAM_STR);
-$query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-$query->bindParam(':todate',$todate,PDO::PARAM_STR);
-$query->bindParam(':comment',$comment,PDO::PARAM_STR);
-$query->bindParam(':status',$status,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$msg="Booked Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
+require 'sendmail.php'; // Import file gửi email
+// session_start();
+// error_reporting(0);
+// include('includes/config.php');
+// if(isset($_POST['submit2']))
+// {
+// $pid=intval($_GET['pkgid']);
+// $useremail=$_SESSION['login'];
+// $fromdate=$_POST['fromdate'];
+// $todate=$_POST['todate'];
+// $comment=$_POST['comment'];
+// $status=0;
+// $sql="INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
+// $query = $dbh->prepare($sql);
+// $query->bindParam(':pid',$pid,PDO::PARAM_STR);
+// $query->bindParam(':useremail',$useremail,PDO::PARAM_STR);
+// $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+// $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+// $query->bindParam(':comment',$comment,PDO::PARAM_STR);
+// $query->bindParam(':status',$status,PDO::PARAM_STR);
+// $query->execute();
+// $lastInsertId = $dbh->lastInsertId();
+// // Kết nối database và lưu thông tin đặt phòng (giả sử đã hoàn tất)
+// // Gửi email nếu đặt hàng thành công
+// if ($lastInsertId) {
+//     // Thông tin khách hàng
+//     $customerEmail = $useremail; // Lấy email từ session
+//     $customerName = $_SESSION['username']; // Nếu có lưu tên khách hàng trong session
+
+//     // Thông tin đặt phòng
+
+//     $bookingDetails = [
+//         'booking_id' => $lastInsertId,
+//         'booking_date' => date('Y-m-d'),
+//         'package_name' => $_POST['PackageName'] // Nếu có
+//     ];
+
+//     // Gửi email xác nhận
+//     if (sendBookingEmail($customerEmail, $customerName, $bookingDetails)) {
+// 		$msg="Booked Successfully";
+//     } else {
+//         echo "<script>showToast('Đặt phòng thành công nhưng không thể gửi email.', 'error');</script>";
+//     }
+// } else {
+//     echo "<script>showToast('Đặt phòng thất bại. Vui lòng thử lại.', 'error');</script>";
+// }
+
+// }
+if(isset($_POST['submit2'])) {
+    $pid = intval($_GET['pkgid']);
+    $useremail = $_SESSION['login'];
+    $fromdate = $_POST['fromdate'];
+    $todate = $_POST['todate'];
+    $comment = $_POST['comment'];
+    $status = 0;
+
+    // Lấy PackageName từ bảng tbltourpackages
+    $sql = "SELECT PackageName FROM tbltourpackages WHERE PackageId=:pid";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':pid', $pid, PDO::PARAM_STR);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        $packageName = $result['PackageName'];
+
+        // Chèn dữ liệu vào bảng tblbooking
+        $sql = "INSERT INTO tblbooking(PackageId, UserEmail, FromDate, ToDate, Comment, status) VALUES(:pid, :useremail, :fromdate, :todate, :comment, :status)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':pid', $pid, PDO::PARAM_STR);
+        $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
+        $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
+        $query->bindParam(':todate', $todate, PDO::PARAM_STR);
+        $query->bindParam(':comment', $comment, PDO::PARAM_STR);
+        $query->bindParam(':status', $status, PDO::PARAM_STR);
+        $query->execute();
+        $lastInsertId = $dbh->lastInsertId();
+
+        // Kiểm tra và gửi email xác nhận
+        if ($lastInsertId) {
+            $customerEmail = $useremail;
+            $customerName = $_SESSION['username']; // Tên khách hàng từ session
+
+            // Chi tiết đặt phòng
+            $bookingDetails = [
+                'booking_id' => $lastInsertId,
+                'booking_date' => date('Y-m-d'),
+                'package_name' => $packageName // Gắn tên gói vào đây
+            ];
+
+            // Gửi email
+            if (sendBookingEmail($customerEmail, $customerName, $bookingDetails)) {
+                $msg = "Booked Successfully";
+            } else {
+                echo "<script>showToast('Đặt phòng thành công nhưng không thể gửi email.', 'error');</script>";
+            }
+        } else {
+            echo "<script>showToast('Đặt phòng thất bại. Vui lòng thử lại.', 'error');</script>";
+        }
+    } else {
+        echo "<script>showToast('Không tìm thấy gói du lịch. Vui lòng thử lại.', 'error');</script>";
+    }
 }
 
-}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -77,14 +150,45 @@ $error="Something went wrong. Please try again";
     -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
+.toast {
+        visibility: hidden;
+        max-width: 50%;
+        height: 50px;
+        margin-left: -125px;
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+    }
+
+    .toast.show {
+        visibility: visible;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
 		</style>				
 </head>
 <body>
 <!-- top-header -->
 <?php include('includes/header.php');?>
-<div class="banner-3">
+<div class="banner-2">
 	<div class="container">
-		<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"> TMS -Package Details</h1>
+		<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"></h1>
 	</div>
 </div>
 <!--- /banner ---->
@@ -129,8 +233,9 @@ foreach($results as $result)
 			</div>
 						<div class="clearfix"></div>
 				<div class="grand">
-					<p>Grand Total</p>
-					<h3>USD.800</h3>
+				<h4>Grand Total</h4>
+                <h4>USD.<?php echo htmlentities($result->PackagePrice); ?></h4>
+
 				</div>
 			</div>
 		<h3>Package Details</h3>
@@ -162,12 +267,31 @@ foreach($results as $result)
 		</div>
 		</form>
 <?php }} ?>
-
-
 	</div>
 </div>
+<script>
+    function showToast(message, type) {
+        var toast = document.createElement("div");
+        toast.className = "toast show";
+        toast.innerHTML = message;
+
+        if (type === 'success') {
+            toast.style.backgroundColor = "#4CAF50"; // Màu xanh cho thành công
+        } else if (type === 'error') {
+            toast.style.backgroundColor = "#f44336"; // Màu đỏ cho lỗi
+        }
+
+        document.body.appendChild(toast);
+
+        // Tự động ẩn thông báo sau 3 giây
+        setTimeout(function() {
+            toast.classList.remove("show");
+            document.body.removeChild(toast);
+        }, 3000);
+    }
+</script>
 <!--- /selectroom ---->
-<<!--- /footer-top ---->
+<!--- /footer-top ---->
 <?php include('includes/footer.php');?>
 <!-- signup -->
 <?php include('includes/signup.php');?>			
@@ -177,5 +301,6 @@ foreach($results as $result)
 <!-- //signin -->
 <!-- write us -->
 <?php include('includes/write-us.php');?>
+
 </body>
 </html>

@@ -9,6 +9,10 @@ include('includes/config.php');
 <title>TMS  | Package List</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Tourism Management System (TMS) offers the best tour packages and services for travelers.">
+    <meta name="keywords" content="tourism, travel, packages, tours, holiday packages, tour services">
+    <meta name="author" content="Tourism Management System">
+    <meta name="robots" content="index, follow">
 <script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -30,9 +34,9 @@ include('includes/config.php');
 <body>
 <?php include('includes/header.php');?>
 <!--- banner ---->
-<div class="banner-3">
+<div class="banner-2">
 	<div class="container">
-		<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"> TMS- Package List</h1>
+		<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"></h1>
 	</div>
 </div>
 <!--- /banner ---->

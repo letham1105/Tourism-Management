@@ -68,11 +68,11 @@
 					<nav class="cl-effect-1">
 						<ul class="nav navbar-nav">
 							<li><a href="index.php">Home</a></li>
-							    <li><a href="about.php">About Us</a></li>
+							    <li><a href="../tms/about_us.php">About Us</a></li>
 								<li><a href="package-list.php">Tour Packages</a></li>
  						        <li><a href="../tms/privacy.php">Privacy Policy</a></li>
-                                <li><a href="terms.php">Terms of Use</a></li>
-                                <li><a href="contact.php">Contact Us</a></li>
+                                <li><a href="../tms/terms.php">Terms of Use</a></li>
+                                <li><a href="../tms/contact.php">Contact Us</a></li>
 </ul>
 
 								<?php if($_SESSION['login'])

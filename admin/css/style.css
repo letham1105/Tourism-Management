@@ -341,7 +341,7 @@ li#menu-academico{
     padding: 0.3em 1em;
 }
 .logo-w3-agile {
-    background: #a2d200;
+    background: #34ad00;
     float: left;
     width: 65.25%;
     text-align: center;
@@ -897,26 +897,28 @@ ul.dropdown-menu.drp-mnu li {
 }
 /*--header --*/
 /*---four-grids-----*/ 
+/*---four-grids-----*/
 .four-agileits {
-    background: #ff4a43;
+    background: #b5b5b5;
     text-align: center;
     padding: 2em 0;
-}
-.four-agileinfo {
-    background: #22beef;
+  }
+  .four-agileinfo {
+    background: #6ca1c4;
     padding: 2em 0;
     text-align: center;
-}
-.four-w3ls {
-    background: #a2d200;
+  }
+  .four-w3ls {
+    background: #83c069;
     padding: 2em 0;
     text-align: center;
-}
-.four-wthree {
-    background: #8e44ad;
+  }
+  .four-wthree {
+    background: #6ca1c4;
     padding: 2em 0;
     text-align: center;
-}
+  }
+  
 .four-grid:nth-child(1) {
     padding-left: 0;
 }

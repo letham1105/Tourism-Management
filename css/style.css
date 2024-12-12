@@ -143,6 +143,9 @@ i.fa.fa-lock {
     -moz-background-size: cover;
     min-height: 700px;
 }
+
+
+
 .banner h1 {
     font-size: 50px;
     margin-bottom: 40px;
@@ -1506,7 +1509,7 @@ button.subbtn:focus, button.subbtn:hover {
     font-weight: normal;
     background: none;
     border: 1px solid #000;
-    color: #D2D1D1;
+    color: #000000;
     outline: none;
     font-size: 14px;
     margin-top: 20px;

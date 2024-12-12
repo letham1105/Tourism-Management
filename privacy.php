@@ -119,32 +119,32 @@ include('includes/config.php');
 
     <h3 class="wow fadeInUp animated" data-wow-delay=".7s">C. How Tourism Australia uses and discloses information about youy</h3>
     <p class="wow fadeIn animated" data-wow-delay=".8s">
-    ourism Australia will only use and disclose personal information for the purpose for which it was collected, or otherwise in accordance with the applicable privacy and data protection laws and regulations. For example, if you register on a Tourism Australia website to receive information about travelling to Australia, Tourism Australia will use your name and email address to send you this information. Other examples include use or disclosure for the purpose of:
+    We collect and use personal information for the purpose it was provided, in accordance with privacy laws and regulations. For example, if you register on our Tourism Management website to receive updates on travel packages, we will use your name and email address to send you the relevant information. 
     </p>
 
     <h3 class="wow fadeInUp animated" data-wow-delay=".7s">D. How Tourism Australia transfers information we collect internationally</h3>
     <p class="wow fadeIn animated" data-wow-delay=".8s">
-    It is possible that Tourism Australia will disclose your personal information overseas as part of its marketing functions. Countries in which recipients are likely to be located include those where Tourism Australia has regional offices located including the USA, United Kingdom, China, Japan, Korea, Singapore, Malaysia, India, Indonesia, Germany and New Zealand.
+    Tourism Management may transfer your personal information to other countries in connection with our global operations. These transfers may include countries where our partners, affiliates, and service providers are located
     </p>
 
     <h3 class="wow fadeInUp animated" data-wow-delay=".7s">E. How Tourism Australia stores and secures information we collect</h3>
     <p class="wow fadeIn animated" data-wow-delay=".8s">
-    Tourism Australia strives to ensure the security, integrity and privacy of personal information submitted to its websites, and periodically updates its security measures in light of current technologies. You need to be aware of inherent risks associated with the transmission of information via the Internet. Tourism Australia cannot guarantee or warrant the security of any personal information you submit to its websites. If you have concerns in this regard, Tourism Australia has other ways of obtaining and providing information. Postal services and phone facilities are available.
+    Tourism Management is committed to protecting the security and privacy of your personal information. We implement industry-standard security measures to safeguard your data, including encryption and secure servers.
 
-Tourism Australia websites may also be linked to websites operated by third parties. These links are meant for your convenience only. Links to third party websites do not constitute sponsorship, endorsement or approval of these websites. Visitors to those websites should refer to their separate privacy policies and practices, e.g. Google Analytics and Adobe packages.
+However, we encourage you to be mindful of the risks involved when transmitting personal data online. We cannot guarantee the absolute security of your data while it is being transferred over the internet, but we offer alternative methods, such as postal services and phone support, to communicate with us.
+
+We may also link to third-party websites that provide related services, such as booking engines or review platforms. These links are provided for convenience, and we recommend you review the privacy policies of those sites.
+
+
     </p>
 
     <h3 class="wow fadeInUp animated" data-wow-delay=".7s">F. How to access and control your information</h3>
     <p class="wow fadeIn animated" data-wow-delay=".8s">
-    nder the Privacy Act, you have the right to seek access to the records of personal information that Tourism Australia holds about you. You also have the right to ask Tourism Australia to alter your personal information if you think the information is inaccurate, out-of-date, incomplete, irrelevant or misleading.
+    Under applicable privacy laws, you have the right to access the personal information we hold about you and request changes if necessary. If you believe that your information is inaccurate, outdated, or incomplete, you can request corrections.
 
-If you wish to access or correct your personal information that Tourism Australia holds, please submit a written request setting out what information you wish to access or correct, your name and a mailing/email address to the Privacy Officer, using the contact details set out at the end of this Policy. Tourism Australia may require you to verify your identity. Tourism Australia will respond to your request within 30 days.
+To access or update your information, please contact us in writing, specifying what details you would like to correct or access. We may require you to verify your identity before we process your request. We will respond to your inquiry within 30 days.
 
-If Tourism Australia refuses to provide you with access to your personal information or to correct that information as you request, it will provide you with reasons for that refusal and information about how to make a complaint is set out below.
-
-If Tourism Australia refuses to correct your personal information, it will take reasonable steps to associate a statement with your personal information that you consider the information to be inaccurate.
-
-You may also request access to and seek correction of personal information under the Freedom of Information Act 1982 (Cth).
+If your request is denied, we will provide an explanation and guidance on how to lodge a complaint.
     </p>
 </div>
 

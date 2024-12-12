@@ -9,7 +9,12 @@ include('includes/config.php');
 <title>TMS | Tourism Management System</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Tourism Management System (TMS) offers the best tour packages and services for travelers.">
+    <meta name="keywords" content="tourism, travel, packages, tours, holiday packages, tour services">
+    <meta name="author" content="Tourism Management System">
+    <meta name="robots" content="index, follow">
 <script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
